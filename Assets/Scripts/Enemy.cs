@@ -2,19 +2,30 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float health = 100f;
+    public int health = 100;
+    public int damage = 10;
 
-    public void TakeDamage(float amount)
+    public virtual void TakeDamage(int amount)
     {
         health -= amount;
-        if (health <= 0f)
+        if (health <= 0)
         {
             Die();
         }
     }
 
-    void Die()
+    public virtual void AttackPlayer(GameObject player)
     {
-        Destroy(gameObject); // Destroy the enemy when health is zero
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(damage);
+        }
+    }
+
+    protected virtual void Die()
+    {
+        // Play death animation or effects here.
+        Destroy(gameObject);
     }
 }

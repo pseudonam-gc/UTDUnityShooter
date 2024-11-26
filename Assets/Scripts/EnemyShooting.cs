@@ -16,7 +16,7 @@ public class EnemyShooting : MonoBehaviour
         }
     }
 
-    void Shoot()
+    public void Shoot()
     {
         Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
     }
