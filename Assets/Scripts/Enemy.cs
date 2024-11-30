@@ -30,6 +30,31 @@ public class Enemy : MonoBehaviour
             agent.SetDestination(player.position);
         }
     }
+    
+    public virtual void LockAllRotations() {
+        // Lock rotation for all child transforms
+        foreach (Transform child in transform)
+        {
+            Rigidbody rb = child.gameObject.GetComponent<Rigidbody>();
+            if (rb == null)
+            {
+                rb = child.gameObject.AddComponent<Rigidbody>();
+            }
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+    }
+
+    public virtual void DisableGravity() {
+        foreach (Transform child in transform)
+        {
+            Rigidbody rb = child.gameObject.GetComponent<Rigidbody>();
+            if (rb == null)
+            {
+                rb = child.gameObject.AddComponent<Rigidbody>();
+            }
+            rb.useGravity = false;
+        }
+    }
 
     public virtual void TakeDamage(int amount)
     {
