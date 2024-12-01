@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour
     public int health = 100;
     public int damage = 10;
 
+    protected Transform player;   // Reference to the player
     private NavMeshAgent agent; // Reference to the NavMeshAgent
-    private Transform player;   // Reference to the player
 
     void Start()
     {
@@ -32,19 +32,25 @@ public class Enemy : MonoBehaviour
     }
     
     public virtual void LockAllRotations() {
-        // Lock rotation for all child transforms
+        Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            rb = gameObject.AddComponent<Rigidbody>();
+        }
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         foreach (Transform child in transform)
         {
-            Rigidbody rb = child.gameObject.GetComponent<Rigidbody>();
-            if (rb == null)
+            Rigidbody childrb = child.gameObject.GetComponent<Rigidbody>();
+            if (childrb == null)
             {
-                rb = child.gameObject.AddComponent<Rigidbody>();
+                childrb = child.gameObject.AddComponent<Rigidbody>();
             }
-            rb.constraints = RigidbodyConstraints.FreezeRotation;
+            childrb.constraints = RigidbodyConstraints.FreezeRotation;
         }
     }
 
     public virtual void DisableGravity() {
+
         foreach (Transform child in transform)
         {
             Rigidbody rb = child.gameObject.GetComponent<Rigidbody>();
