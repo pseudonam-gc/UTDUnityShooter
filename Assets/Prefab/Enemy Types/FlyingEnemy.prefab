@@ -123,8 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 10
-  speed: 5
-  hoverHeight: 3
+  speed: 9
+  hoverHeight: 8
   stopDistance: 3
 --- !u!54 &499918825368383055
 Rigidbody:

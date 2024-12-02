@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class StrafingEnemy : Enemy
 {
-    public float strafeSpeed = 8f;
-    public float strafeCooldown = 2.5f;
+    public float strafeSpeed = 3f;
+    public float strafeCooldown = 5f;
+    public float chaseSpeed = 8f;
     private Rigidbody rb;
     private float strafeDirection = 1;
 
@@ -25,9 +26,17 @@ public class StrafingEnemy : Enemy
         if (player != null)
         {
             transform.LookAt(player);
-            Vector3 strafe = transform.right * strafeDirection * strafeSpeed * Time.deltaTime;
+            Vector3 strafe = (transform.right * strafeDirection).normalized * strafeSpeed;
             strafe.y = 0;
-            transform.position += strafe;
+            //transform.position += strafe;
+            // apart from strafe, move towards the player
+            Vector3 chase = (player.position - transform.position).normalized * chaseSpeed;
+            chase.y = 0;
+            
+            Vector3 newvel = rb.velocity;
+            newvel.x = strafe.x + chase.x;
+            newvel.z = strafe.z + chase.z;
+            rb.velocity = newvel;
         }
     }
 }
