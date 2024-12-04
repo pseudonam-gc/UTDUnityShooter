@@ -21,7 +21,7 @@ public class PlayerShooting : MonoBehaviour
             Enemy enemy = hit.transform.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(Mathf.RoundToInt(damage)); // Rounds the float to the nearest integer
+                enemy.TakeDamage(damage);
             }
         }
     }
