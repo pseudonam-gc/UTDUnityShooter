@@ -5,17 +5,27 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public GameObject player;
+    public float speed = 10f;
+    public int damage = 10;
+    private Rigidbody rb; 
+
     private void Start()
     {
-        player = GameObject.FindWithTag("Player"); // Assuming your player has the "Player" tag
     }
+
+    public void InitializeVel(Vector3 direction) {
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.velocity = direction * speed;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Health playerHealth = player.GetComponent<Health>();
-            playerHealth.TakeDamage(10);
-            Destroy(gameObject);
-        }
+            Player playerComp = collision.gameObject.GetComponent<Player>();
+            playerComp.TakeDamage(damage);
+        } 
+        Destroy(gameObject);
     }
 }

@@ -76,6 +76,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  waterMask:
+    serializedVersion: 2
+    m_Bits: 16
   Camera: {fileID: 4260639855435483690}
 --- !u!143 &7412163542074141357
 CharacterController:

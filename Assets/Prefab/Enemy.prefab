@@ -137,10 +137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1b0cd94560445a094b36b8470f642f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 4605534956447907845, guid: eba4006ed4ac4eb41828cc7ae5eb8c2f, type: 3}
   projectilePrefab: {fileID: 5492900808121858223, guid: 2c779c1166903e947bdbd87f7f162bb5,
     type: 3}
-  firePoint: {fileID: 7293802748990267951}
-  shootInterval: 2
+  fireRate: 2
+  shotQuantity: 2
+  spread: 0
 --- !u!54 &2777920292742863174
 Rigidbody:
   m_ObjectHideFlags: 0

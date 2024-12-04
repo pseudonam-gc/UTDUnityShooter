@@ -83,6 +83,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1824209642386661106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1218756547965644213}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1218756547965644213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824209642386661106}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 8.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5112830691540444045}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2103464464842363220
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +335,7 @@ GameObject:
   - component: {fileID: 1258548128333891567}
   m_Layer: 0
   m_Name: Player_Final_Gunner
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,6 +355,7 @@ Transform:
   m_Children:
   - {fileID: 5709433022873710946}
   - {fileID: 1795653299799204461}
+  - {fileID: 1218756547965644213}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &2581258111925562372
@@ -345,8 +377,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 3.7
-  m_Radius: 0.6
+  m_Height: 3
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.7
   m_SkinWidth: 0.08
@@ -397,11 +429,14 @@ MonoBehaviour:
   gravity: -19.62
   jumpHeight: 5
   maxSlopeAngle: 45
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 1218756547965644213}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  waterMask:
+    serializedVersion: 2
+    m_Bits: 16
   Camera: {fileID: 5709433022873710946}
 --- !u!114 &1258548128333891567
 MonoBehaviour:

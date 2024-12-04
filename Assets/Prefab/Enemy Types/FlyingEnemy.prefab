@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 4667469030859120301}
   - component: {fileID: 3524680905755814959}
   - component: {fileID: 499918825368383055}
-  m_Layer: 0
+  - component: {fileID: 1116621879895475763}
+  m_Layer: 6
   m_Name: FlyingEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,3 +154,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1116621879895475763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929108623141956289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1b0cd94560445a094b36b8470f642f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 5492900808121858223, guid: 2c779c1166903e947bdbd87f7f162bb5,
+    type: 3}
+  fireRate: 4
+  shotQuantity: 3
+  spread: 5
+  bulletDamage: 7

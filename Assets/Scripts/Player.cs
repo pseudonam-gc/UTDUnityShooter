@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
@@ -21,11 +23,6 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        // find the player tag, kill them off
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            Destroy(player);
-        }
+        Destroy(gameObject);
     }
 }
