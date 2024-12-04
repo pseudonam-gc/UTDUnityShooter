@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform JumpingEnemy;
     public Transform StrafingEnemy;
     public Transform player;   // Reference to the player
+    public LayerMask groundLayer;
     public float timer = 0;
     public float flyingCooldown = 40;
     public float jumpingCooldown = 30;
@@ -33,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
         if (flyingTimer <= 0)
         {
             SpawnEnemyType(FlyingEnemy);
-            flyingCooldown *= 0.93f;
+            flyingCooldown *= 0.95f;
             flyingTimer = flyingCooldown;
         }
         if (jumpingTimer <= 0)
@@ -53,14 +54,18 @@ public class EnemySpawner : MonoBehaviour
     {
         float x = Random.Range(-150, 150);
         float z = Random.Range(-150, 150);
-
-        while (Vector3.Distance(new Vector3(x, 20, z), player.position) < 70)
+        while (Vector3.Distance(new Vector3(x, player.position.y, z), player.position) < 70)
         {
             x = Random.Range(-150, 150);
             z = Random.Range(-150, 150);
         }
 
-        Instantiate(enemyType, new Vector3(x, 20, z), Quaternion.identity);
+        Vector3 spawnloc = new Vector3(x, 50, z);
+        RaycastHit hit;
+        if (Physics.Raycast(spawnloc, Vector3.down, out hit, 100f, groundLayer)) {
+            spawnloc.y = hit.point.y + 2;
+        } 
+        Instantiate(enemyType, spawnloc, Quaternion.identity);
         
     }
     
