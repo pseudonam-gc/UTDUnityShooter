@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 931475575}
   - component: {fileID: 931475574}
   - component: {fileID: 931475573}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 716efef5f3fc97a43b3f57b8945783c6, type: 2}
+  - {fileID: 2100000, guid: 709eff78e1a5b0e49824d94b4fb8ef55, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -856,6 +856,9 @@ MonoBehaviour:
   StrafingEnemy: {fileID: 1327999701371275166, guid: d67d7dc154e9a4c6f807013ea3505cfa,
     type: 3}
   player: {fileID: 982376718}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
   timer: 0
   flyingCooldown: 10
   jumpingCooldown: 12
@@ -887,7 +890,7 @@ GameObject:
   - component: {fileID: 1376681369}
   - component: {fileID: 1376681368}
   - component: {fileID: 1376681367}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walls (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -951,7 +954,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 716efef5f3fc97a43b3f57b8945783c6, type: 2}
+  - {fileID: 2100000, guid: 709eff78e1a5b0e49824d94b4fb8ef55, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -993,7 +996,7 @@ GameObject:
   - component: {fileID: 1396420953}
   - component: {fileID: 1396420952}
   - component: {fileID: 1396420951}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walls (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1060,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 716efef5f3fc97a43b3f57b8945783c6, type: 2}
+  - {fileID: 2100000, guid: 709eff78e1a5b0e49824d94b4fb8ef55, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1164,7 +1167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1918030097}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walls
   m_TagString: wall
   m_Icon: {fileID: 0}
@@ -1202,7 +1205,7 @@ GameObject:
   - component: {fileID: 2091521247}
   - component: {fileID: 2091521246}
   - component: {fileID: 2091521245}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walls (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1266,7 +1269,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 716efef5f3fc97a43b3f57b8945783c6, type: 2}
+  - {fileID: 2100000, guid: 709eff78e1a5b0e49824d94b4fb8ef55, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
