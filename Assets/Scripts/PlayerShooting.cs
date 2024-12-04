@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public float damage = 10f;
+    public int damage = 10;
     public Camera fpsCam;
 
     void Update()
