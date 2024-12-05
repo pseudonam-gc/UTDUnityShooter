@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5929108623141956289}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -94,11 +94,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5492900808121858223, guid: 2c779c1166903e947bdbd87f7f162bb5,
     type: 3}
-  fireRate: 4
-  shotQuantity: 3
+  fireRate: 2
+  shotQuantity: 1
   spread: 5
   bulletDamage: 7
-  shootingRange: 30
+  shootingRange: 80
 --- !u!65 &8797179549256183926
 BoxCollider:
   m_ObjectHideFlags: 0

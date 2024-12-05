@@ -6,13 +6,14 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public int damage = 10;
+    public int damage = 13;
     public Camera fpsCam;
-    public int maxAmmo = 300;
+    public int maxAmmo = 120;
     public float range = 100f;
-    public float fireRate = 500f;
+    public float fireRate = 8f;
     public int currentAmmo;
-    private float reloadTime = 1.5f;
+    public float totalTime = 0f;
+    private float reloadTime = 1f;
     private float nextTimeToFire = 0f;
     private bool isReloading = false;
    
@@ -20,6 +21,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Start()
     {
+        totalTime = 0f;
         if(currentAmmo == -1)
             currentAmmo = maxAmmo;
     }
@@ -40,6 +42,8 @@ public class PlayerShooting : MonoBehaviour
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
         }
+
+        totalTime += Time.deltaTime;
 
         if (AmmoManager.Instance.ammoDisplay != null)
             ammoDisplay.text = $"{currentAmmo}/{maxAmmo}";
@@ -64,7 +68,5 @@ public class PlayerShooting : MonoBehaviour
                 enemy.TakeDamage(damage);
             }
         }
-    }
-
-   
+    }   
 }

@@ -10,9 +10,9 @@ public class EnemySpawner : MonoBehaviour
     public Transform player;   // Reference to the player
     public LayerMask groundLayer;
     public float timer = 0;
-    public float flyingCooldown = 40;
-    public float jumpingCooldown = 30;
-    public float strafingCooldown = 25;
+    public float flyingCooldown = 40f/1.5f;
+    public float jumpingCooldown = 30f/1.5f;
+    public float strafingCooldown = 25f/1.5f;
     private float flyingTimer; 
     private float jumpingTimer;
     private float strafingtimer;
@@ -34,20 +34,20 @@ public class EnemySpawner : MonoBehaviour
         if (flyingTimer <= 0)
         {
             SpawnEnemyType(FlyingEnemy);
-            flyingCooldown *= 0.95f;
+            flyingCooldown = Mathf.Max(3f, flyingCooldown*0.97f);
             flyingTimer = flyingCooldown;
         }
         if (jumpingTimer <= 0)
         {
             SpawnEnemyType(JumpingEnemy);
-            flyingCooldown *= 0.95f;
+            jumpingCooldown = Mathf.Max(3f, jumpingCooldown*0.97f);
             jumpingTimer = jumpingCooldown;
         }
         if (strafingtimer <= 0)
         {
             SpawnEnemyType(StrafingEnemy);
             strafingtimer = strafingCooldown;
-            flyingCooldown *= 0.97f;
+            strafingCooldown = Mathf.Max(3f, strafingCooldown*0.97f);
         }
     }
     void SpawnEnemyType(Transform enemyType)
