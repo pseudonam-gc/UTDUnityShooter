@@ -28,6 +28,8 @@ public class PlayerShooting : MonoBehaviour
     {
         if(isReloading)
             return;
+        if(Input.GetKeyDown(KeyCode.Mouse1) && currentAmmo < maxAmmo && isReloading == false)
+            StartCoroutine(Reload());
         if (currentAmmo <= 0)
         {
             StartCoroutine(Reload());
