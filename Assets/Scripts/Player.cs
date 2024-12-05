@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public int maxHealth = 100;
     private int currentHealth;
     public TextMeshProUGUI playerHealthUI;
+    
     void Start()
     {
         currentHealth = maxHealth;
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         {
             Die();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
         }
         else
             playerHealthUI.text = $"{currentHealth}%";
