@@ -8,56 +8,51 @@ public class PlayerShooting : MonoBehaviour
 {
     public int damage = 10;
     public Camera fpsCam;
-    public bool isShooting, readyToShoot;
-    bool allowReset = true;
+    public int maxAmmo = 300;
     public float range = 100f;
-    public float shootingDelay = 2f;
-    public float spreadIntensity;
-    public int bulletsPerBurst = 30;
-    public int burstBulletsLeft;
-    public float reloadTime;
-    public int magazineSize, bulletsLeft;
-    public bool isReloading;
+    public float fireRate = 500f;
+    public int currentAmmo;
+    private float reloadTime = 1.5f;
+    private float nextTimeToFire = 0f;
+    private bool isReloading = false;
+   
     public TextMeshProUGUI ammoDisplay;
-    public enum shootingMode
-    {
-        Single,Burst,Auto
-    }
 
-    public shootingMode currentShootingMode;
-
-    private void Awake()
+    void Start()
     {
-        readyToShoot = true;
-        burstBulletsLeft = bulletsPerBurst;
-        bulletsLeft = magazineSize;
+        if(currentAmmo == -1)
+            currentAmmo = maxAmmo;
     }
 
     void Update()
     {
-        if (currentShootingMode == shootingMode.Auto)
-            isShooting = Input.GetKey(KeyCode.Mouse0);
-        else if (currentShootingMode == shootingMode.Burst || currentShootingMode == shootingMode.Single)
-            isShooting = Input.GetKeyDown(KeyCode.Mouse0);
-        if(readyToShoot && isShooting && bulletsLeft > 0)
+        if(isReloading)
+            return;
+        if (currentAmmo <= 0)
         {
-            burstBulletsLeft = bulletsPerBurst;
+            StartCoroutine(Reload());
+            return;
+        }
+        if(Input.GetKey(KeyCode.Mouse0) && Time.time >= nextTimeToFire)
+        {
+            nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) && bulletsLeft < magazineSize && isReloading == false)
-            Reload();
-        if (readyToShoot && !isShooting && isReloading == false && bulletsLeft <= 0)
-            Reload();
-
         if (AmmoManager.Instance.ammoDisplay != null)
-            ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst}/{magazineSize / bulletsPerBurst}";
+            ammoDisplay.text = $"{currentAmmo}/{maxAmmo}";
+    }
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(reloadTime);
+        currentAmmo = maxAmmo;
+        isReloading = false;
     }
 
     private void Shoot()
     {
-        bulletsLeft--;
-        readyToShoot=false;
+        currentAmmo--;
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
@@ -69,14 +64,5 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    private void Reload()
-    {
-        isReloading = true;
-        Invoke("ReloadCompleted", reloadTime);
-    }
-    private void ReloadCompleted()
-    {
-        bulletsLeft = magazineSize;
-        isReloading = false;
-    }
+   
 }
