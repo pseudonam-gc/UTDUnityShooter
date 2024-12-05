@@ -37,22 +37,23 @@ public class Enemy : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
-    
-    public virtual void LockAllRotations() {
+
+    public virtual void LockAllRotations()
+    {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         if (rb == null)
         {
             rb = gameObject.AddComponent<Rigidbody>();
         }
         rb.constraints = RigidbodyConstraints.FreezeRotation;
+
         foreach (Transform child in transform)
         {
-            Rigidbody childrb = child.gameObject.GetComponent<Rigidbody>();
-            if (childrb == null)
+            if (!child.gameObject.GetComponent<Rigidbody>() && child.GetComponent<Collider>())
             {
-                childrb = child.gameObject.AddComponent<Rigidbody>();
+                Rigidbody childrb = child.gameObject.AddComponent<Rigidbody>();
+                childrb.constraints = RigidbodyConstraints.FreezeRotation;
             }
-            childrb.constraints = RigidbodyConstraints.FreezeRotation;
         }
     }
 

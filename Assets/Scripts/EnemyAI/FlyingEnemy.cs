@@ -21,8 +21,14 @@ public class FlyingEnemy : Enemy
             if (Vector3.Distance(transform.position, targetPosition) > stopDistance) {
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             }
+            LookAtPlayer();
         } else {
             Debug.LogWarning("Player not found!");
         }
+    }
+
+    private void LookAtPlayer() { 
+        Vector3 lookAtTarget = new Vector3(player.position.x, transform.position.y, player.position.z); 
+        transform.LookAt(lookAtTarget); 
     }
 }

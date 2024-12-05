@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class JumpingEnemy : Enemy
 {
-    public float upwardForce = 7f;   
+    public float upwardForce = 7f;
     public float horizontalForce = 10f;
     public float leapInterval = 2.5f;    // Time interval between leaps
     public LayerMask groundLayer;      // Layer used to check if on the ground
@@ -13,7 +13,7 @@ public class JumpingEnemy : Enemy
     {
         LockAllRotations();
         rb = GetComponent<Rigidbody>();
-        
+
         leapTimer = leapInterval;
         groundLayer = LayerMask.GetMask("Ground");
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -25,6 +25,7 @@ public class JumpingEnemy : Enemy
 
         if (IsGrounded() && leapTimer <= 0f && player != null)
         {
+            LookAtPlayer();
             LeapTowardsPlayer();
             leapTimer = leapInterval;
         }
@@ -48,5 +49,11 @@ public class JumpingEnemy : Enemy
         // Apply forces: upward force and horizontal force
         Vector3 leapForce = Vector3.up * upwardForce + horizontalDirection * horizontalForce;
         rb.AddForce(leapForce, ForceMode.Impulse);
+    }
+
+    private void LookAtPlayer()
+    {
+        Vector3 lookAtTarget = new Vector3(player.position.x, transform.position.y, player.position.z);
+        transform.LookAt(lookAtTarget);
     }
 }
