@@ -329,10 +329,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5112830691540444045}
   - component: {fileID: 2581258111925562372}
-  - component: {fileID: 5159334314804938636}
   - component: {fileID: 7478362498970214627}
   - component: {fileID: 1635378577040191387}
   - component: {fileID: 1258548128333891567}
+  - component: {fileID: 1247229577748239110}
   m_Layer: 0
   m_Name: Player_Final_Gunner
   m_TagString: Player
@@ -349,7 +349,7 @@ Transform:
   m_GameObject: {fileID: 4605534956447907845}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.57, z: -31.91}
+  m_LocalPosition: {x: 0, y: 1, z: -31.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -384,19 +384,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5159334314804938636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4605534956447907845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1c589836bb7f471ebe019c7932b68a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
 --- !u!114 &7478362498970214627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +439,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   fpsCam: {fileID: 7490792625814856469}
+  isShooting: 0
+  readyToShoot: 0
+  shootingDelay: 0.3
+  spreadIntensity: 0
+  bulletsPerBurst: 3
+  burstBulletsLeft: 0
+  reloadTime: 1.5
+  magazineSize: 300
+  bulletsLeft: 0
+  isReloading: 0
+  ammoDisplay: {fileID: 0}
+  currentShootingMode: 0
+--- !u!114 &1247229577748239110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605534956447907845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712c4846e48d84ad4821c8045a7c6a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  playerHealthUI: {fileID: 0}
 --- !u!1 &4766867000514628214
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,7 +615,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 110
+  field of view: 87
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -780,7 +793,7 @@ Transform:
   m_GameObject: {fileID: 6506538497925737660}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.53}
+  m_LocalPosition: {x: -67.4, y: 9.3, z: 3.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

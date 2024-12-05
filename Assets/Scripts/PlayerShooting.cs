@@ -12,7 +12,7 @@ public class PlayerShooting : MonoBehaviour
     bool allowReset = true;
     public float shootingDelay = 2f;
     public float spreadIntensity;
-    public int bulletsPerBurst = 3;
+    public int bulletsPerBurst = 30;
     public int burstBulletsLeft;
     public float reloadTime;
     public int magazineSize, bulletsLeft;
