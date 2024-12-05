@@ -10,6 +10,7 @@ public class PlayerShooting : MonoBehaviour
     public Camera fpsCam;
     public bool isShooting, readyToShoot;
     bool allowReset = true;
+    public float range = 100f;
     public float shootingDelay = 2f;
     public float spreadIntensity;
     public int bulletsPerBurst = 30;
@@ -58,7 +59,7 @@ public class PlayerShooting : MonoBehaviour
         bulletsLeft--;
         readyToShoot=false;
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Enemy enemy = hit.transform.GetComponent<Enemy>();
             if (enemy != null)
